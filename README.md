@@ -4,11 +4,13 @@
 `<input id="fileupload" type="file" name="files" multiple>`
 
 2、如果需要上传的进度条显示，则HTML代码如下所示：
+
 `<div id="progress">
      <div class="bar" style="width: 0%;"></div></div>`
      
 3、需要引入一下js文件，如下：
-`<script src="js/jquery.min.js"></script>     <script src="js/fileUpload/vendor/jquery.ui.widget.js"></script>                                <script src="js/fileUpload/jquery.iframe-transport.js"></script>                               <script src="js/fileUpload/jquery.fileupload.js"></script>`
+
+`<script src="js/jquery.min.js"></script>  <br/>    <script src="js/fileUpload/vendor/jquery.ui.widget.js"></script>   <br/>                              <script src="js/fileUpload/jquery.iframe-transport.js"></script>     <br/>                           <script src="js/fileUpload/jquery.fileupload.js"></script>`
 
 4、js中初始化代码如下所示：
 `$(function () {
@@ -46,12 +48,12 @@
          });
      });`
      
- >对属性进行理解
-    >1、forceIframeTransport: 指的是ie9下支持上传
-    >2、redirect:指的是使iframe跨域访问通过定向选择
-    >3、url: 指的是文件上传的地址
-    >4、formData: 指的是额外添加的参数
-    >5、acceptFileTypes: 指的是上传文件的类型
+ >对属性进行理解 <br/>
+    >1、forceIframeTransport: 指的是ie9下支持上传 <br/>
+    >2、redirect:指的是使iframe跨域访问通过定向选择 <br/>
+    >3、url: 指的是文件上传的地址 <br/>
+    >4、formData: 指的是额外添加的参数 <br/>
+    >5、acceptFileTypes: 指的是上传文件的类型 <br/>
     >6、dataType: 指的是请求的格式
   
     
