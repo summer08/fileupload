@@ -8,7 +8,7 @@
     <title>文件上传</title>
 </head>
 <body>
-<input id="fileupload" type="file" name="files[]" data-url="server/php/" multiple>
+<input id="fileupload" type="file" name="files" multiple>
 <div id="progress">
     <div class="bar" style="width: 0%;"></div>
 </div>
@@ -19,27 +19,15 @@
 <script>
     $(function () {
         $('#fileupload').fileupload({
-            forceIframeTransport: true, //ie9下支持上传文件
-            redirect: location.href.replace( /\/[^\/]*$/, '/cors/result.html?%s' ),//使iframe跨域访问通过定向选择
-            url:'/upload/image.json', //文件上传地址
-            formData:{param1:"p1",param2:"p2"},//如果需要额外添加参数可以在这里添加
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i, //上传文件的类型
+            forceIframeTransport: true,
+            redirect: location.href.replace( /\/[^\/]*$/, '/cors/result.html?%s' ),
+            url:'/upload/image.json',
+            formData:{param1:"p1",param2:"p2"},
+            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
             dataType: 'json',
             done: function (e, data) {
-                //done方法就是上传完毕的回调函数，其他回调函数可以自行查看api
-                //注意result要和jquery的ajax的data参数区分，这个对象包含了整个请求信息
-                //返回的数据在result.result中，假设我们服务器返回了一个json对象
-                //console.log(JSON.stringify(result.result));
+                //上传成功回调
                 var error_code = data.result.error_code;
-                //上传失败
-                if(error_code == 1){
-                    modalWarn(data.result.error_msg);
-                }else{
-                    var imgUrl = data.result.data.img_url;
-                    $.each(data.files, function (index, file) {
-                        $('#iptTxt').val(file.name).attr('imgurl',imgUrl);
-                    });
-                }
             },
             fail: function(e, data){
                 console.log("上传失败："+data.errorThrown);
@@ -59,9 +47,6 @@
             }
         });
     });
-
-   // http://blog.csdn.net/u014316363/article/details/42123223
-    //http://www.cnblogs.com/ZHF/p/5057416.html
 </script>
 </body>
 </html>
