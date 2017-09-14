@@ -28,6 +28,14 @@
             done: function (e, data) {
                 //上传成功回调
                 var error_code = data.result.error_code;
+                if(error_code == 1){
+                    modalWarn(data.result.error_msg);
+                }else{
+                    var imgUrl = data.result.data.img_url;
+                    $.each(data.files, function (index, file) {
+                        $('#iptTxt').val(file.name).attr('imgurl',imgUrl);
+                    });
+                }
             },
             fail: function(e, data){
                 console.log("上传失败："+data.errorThrown);
